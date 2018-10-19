@@ -18,15 +18,47 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- Page level plugin CSS-->
-    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="librerias/datatable/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="librerias/datatable/dataTables.bootstrap4.min.css">
+    <!--<link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="css/datatables.css" type="text/css" rel="stylesheet"/>-->
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/datatables.js"></script>
+    <script src="js/functions.js"></script>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+
+    <!-- Demo scripts for this page-->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-bar-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+    <script src="librerias/datatable/jquery.dataTables.min.js"></script>
+    <script src="librerias/datatable/dataTables.bootstrap4.min.js"></script>
+
+    <!--<script src="main.js"></script>-->
+
+    <?php// require_once "scripts.php";  ?>
+
   </head>
 
   <body id="page-top">
-    <?php 
+    <?php /*
             $servername = 'sistemacompensacionreciclaje.cmeyucgclwtl.us-east-2.rds.amazonaws.com';
             $username = 'SCR2014';
             $pass = 'SCR2014!';
@@ -37,15 +69,25 @@
             if(!$db){
               die("Connection fail: " . mysqli_connect_error());
             }
+            $salida ="";
+            $query = "SELECT * From Usuario";
+
+            if(isset($_POST['consulta'])){
+              $q = $db -> real_escape_string($_POST['consulta']);
+              $query = "SELECT * FROM Usuario WHERE Nombre1 LIKE '%".$q."%'";
+            
+            }
+            $resultado = $db-> query($query);
+*/
            ?>
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.php">Inicio</a>
+      <a class="navbar-brand mr-1" href="index.php">Start Bootstrap</a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <!--<button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
-      </button>
+      </button>-->
 
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -144,51 +186,133 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-12">
-              <h2>Usuarios</h2>
-              <a class="btn btn-success" href="usuarios_agregar.php">Agregar Nuevo 
+              <div class="card text-left">
+                  <div class="card-header">
+                    USUARIOS
+                  </div>
+                  <div class="card-body">
+                    <a class="btn btn-success" href="usuarios_agregar.php">Agregar Nuevo 
                     <span class="fas fa-fw fa-user-plus"></span>
-                  </a>
-                  <br>
-                  <br>
-              <table class="table table-hover table-condensed table-bordered">
-                <caption>
-                  
-                </caption>
-                  <tr>
-                    <td>No. Cuenta</td>
-                    <td>Nombre</td>
-                    <td>Teléfono</td>
-                    <td>Correo</td>
-                    <td>Edad</td>
-                    <td>Puntos</td>
-                  </tr>
-                  <?php
-                  $sql = "SELECT * from Usuario";
-                  $result = mysqli_query($db, $sql);
+                    </a>
+                    <!--<span class="btn btn-primary" data-toggle="modal" data-target="#agregarnuevosdatosmodal">
+                      Agregar nuevo <span class="fa fa-plus-circle"></span>
+                    </span>-->
+                    <hr>
+                    <div id="tablaDatatable">
+                        <?php 
 
-                  while($mostrar = mysqli_fetch_array($result)){
+                        //require_once "clases/conexion.php";
+                        //$obj= new conectar();
+                        //$conexion=$obj->conexion();
 
-                  ?>
-                  <tr>
-                    <td width="150"><?php echo $mostrar['NumCuenta'] ?></td>
-                    <td><?php echo $mostrar['Nombre1'] ?></td>
-                    <td width="150"><?php echo $mostrar['Telefono'] ?></td>
-                    <td><?php echo $mostrar['CorreoElectronico'] ?></td>
-                    <td width="50"><?php echo $mostrar['Sexo'] ?></td>
-                    <td width="100"><?php echo $mostrar['PuntosAcumulados'] ?></td>
-                    <td width="50"><button class="btn btn-warning">Editar</button></td>
-                    <td width="50"><button class="btn btn-danger">Eliminar</button></td>
-                  </tr>
-                  <?php
-                  }
-                  mysqli_close($db);
-                  ?>
-              </table>
+                        $servername = 'sistemacompensacionreciclaje.cmeyucgclwtl.us-east-2.rds.amazonaws.com';
+                        $username = 'SCR2014';
+                        $pass = 'SCR2014!';
+                        $database = 'SCR2014';
+
+                        $conexion = mysqli_connect($servername, $username, $pass, $database);
+
+                        $sql="SELECT NumCuenta,
+                        Nombre1,
+                        Apellido1,
+                        Telefono,
+                        CorreoElectronico,
+                        FechaNacimiento,
+                        PuntosAcumulados
+                        from Usuario";
+                        $result=mysqli_query($conexion,$sql);
+
+                        function busca_edad($fecha_nacimiento){
+                          $dia=date("d");
+                          $mes=date("m");
+                          $ano=date("Y");
+
+                          $dianaz=date("d",strtotime($fecha_nacimiento));
+                          $mesnaz=date("m",strtotime($fecha_nacimiento));
+                          $anonaz=date("Y",strtotime($fecha_nacimiento));
+                      //si el mes es el mismo pero el día inferior aun no ha cumplido años, le quitaremos un año al actual
+                          if (($mesnaz == $mes) && ($dianaz > $dia)) {
+                          $ano=($ano-1); }
+                      //si el mes es superior al actual tampoco habrá cumplido años, por eso le quitamos un año al actual
+                          if ($mesnaz > $mes) {
+                          $ano=($ano-1);}
+                //ya no habría mas condiciones, ahora simplemente restamos los años y mostramos el resultado como su edad
+                          $edad=($ano-$anonaz);
+                          
+                          return $edad;
+                        }
+                        ?>
+                        <div>
+                          <table class="table table-hover table-condensed table-bordered" id="iddatatable">
+                            <thead style="background-color: #28a745;color: white; font-weight: bold;">
+                              <tr>
+                                <td width="100">No. Cuenta</td>
+                                <td>Nombre</td>
+                                <td>Telefono</td>
+                                <td>Correo</td>
+                                <td>Edad</td>
+                                <td>Puntos</td>
+                                <td>Editar</td>
+                                <td>Eliminar</td>
+                              </tr>
+                            </thead>
+                            <tfoot style="background-color: #ccc;color: white; font-weight: bold;">
+                              <tr>
+                                <td width="100">No. Cuenta</td>
+                                <td>Nombre</td>
+                                <td>Telefono</td>
+                                <td>Correo</td>
+                                <td>Edad</td>
+                                <td>Puntos</td>
+                                <td>Editar</td>
+                                <td>Eliminar</td>
+                              </tr>
+                            </tfoot>
+                            <tbody >
+                              <?php 
+                              while ($mostrar=mysqli_fetch_row($result)) {
+                                ?>
+                                <tr >
+                                  <td width="100"><?php echo $mostrar[0] ?></td>
+                                  <td><?php echo $mostrar[1].' '.$mostrar[2] ?></td>
+                                  <td><?php echo $mostrar[3] ?></td>
+                                  <td><?php echo $mostrar[4] ?></td>
+                                  <td><?php echo busca_edad($mostrar[5]) ?></td>
+                                  <td><?php echo $mostrar[6] ?></td>
+                                  <td style="text-align: center;">
+                                    <span class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEditar" onclick="agregaFrmActualizar('<?php echo $mostrar[0] ?>')">
+                                      <span class="fas fa-user-edit"></span>
+                                    </span>
+                                  </td>
+                                  <td style="text-align: center;">
+                                    <span class="btn btn-danger btn-sm" onclick="eliminarDatos('<?php echo $mostrar[0] ?>')">
+                                      <span class="fas fa-user-minus"></span>
+                                    </span>
+                                  </td>
+                                </tr>
+                                <?php 
+                              }
+                              ?>
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <script type="text/javascript">
+                          $(document).ready(function() {
+                            $('#iddatatable').DataTable();
+                          } );
+                        </script>
+                    </div>
+                  </div>
+                  <div class="card-footer text-muted">
+                    Tabla Usuarios
+                  </div>
+              </div>
             </div>
           </div>
 
         </div>
-
+        <br>
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
           <div class="container my-auto">
@@ -226,25 +350,7 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
-
-    <!-- Demo scripts for this page-->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-bar-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    </div> 
 
   </body>
 
