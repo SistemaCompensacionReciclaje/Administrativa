@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Agregar Usuarios</title>
+    <title>SB Admin - Agregar Material</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -167,9 +167,10 @@
 
                             </fieldset>
                             </form>
-              <center><a  class="btn btn-success" href="materiales.php">Agregar Nuevo 
-                <span class="fas fa-fw fa-user-plus"></span>
+              <center><a  class="btn btn-success" href="materiales.php">Agregar
+                <span class="fas fa-fw fa-plus"></span>
               </a></center>  
+              <br>
             </div>
           </div>
 
