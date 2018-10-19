@@ -142,7 +142,7 @@
                   <tr>
                     <td>ID Material</td>
                     <td>Nombre</td>
-                    <td>valor</td>
+                    <td>Valor</td>
                   </tr>
 
                   <tr>
@@ -189,7 +189,7 @@
           <div class="modal-body">Seleccione "Cerrar Sesión" debajo si desea finalizar la sesión actual.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="login.php">Cerrar Sesión</a>
+            <a class="btn btn-success" href="login.php">Cerrar Sesión</a>
           </div>
         </div>
       </div>
