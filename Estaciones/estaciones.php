@@ -133,9 +133,9 @@
           <div class="row">
             <div class="col-sm-12">
               <h2>Estaciones</h2>
-              <button class="btn btn-success">Agregar Nuevo 
+              <a class="btn btn-success" href="estaciones_agregar.php">Agregar Estación 
                     <span class="fas fa-fw fa-plus"></span>
-                  </button>
+                  </a>
                   <br>
                   <br>
               <table class="table table-hover table-condensed table-bordered">
@@ -145,7 +145,7 @@
                   <tr>
                     <td>ID Material</td>
                     <td>Nombre</td>
-                    <td>valor</td>
+                    <td>Valor</td>
                   </tr>
 
                   <tr>
@@ -194,7 +194,7 @@
           <div class="modal-body">Seleccione "Cerrar Sesión" debajo si desea finalizar la sesión actual.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="login.php">Cerrar Sesión</a>
+            <a class="btn btn-success" href="login.php">Cerrar Sesión</a>
           </div>
         </div>
       </div>
