@@ -128,8 +128,39 @@
       </ul>
 
       <div id="content-wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <h2>Ofertas</h2>
+              <a class="btn btn-success" href="ofertas_agregar.php">Agregar Oferta 
+                    <span class="fas fa-fw fa-plus"></span>
+                  </a>
+                  <br>
+                  <br>
+              <table class="table table-hover table-condensed table-bordered">
+                <caption>
+                  
+                </caption>
+                  <tr>
+                    <td>ID Oferta</td>
+                    <td>Nombre</td>
+                    <td>Descripción</td>
+                    <td>Valor</td>
+                    <td>Vigencia</td>
+                  </tr>
 
-        <div class="container-fluid">
+                  <tr>
+                    <td width="150"></td>
+                    <td></td>
+                    <td></td>
+                    <td width="100"></td>
+                    <td width="150"></td>
+                    <td width="50"><button class="btn btn-warning">Editar</button></td>
+                    <td width="50"><button class="btn btn-danger">Eliminar</button></td>
+                  </tr>
+              </table>
+            </div>
+          </div>
 
         </div>
 
@@ -166,7 +197,7 @@
           <div class="modal-body">Seleccione "Cerrar Sesión" debajo si desea finalizar la sesión actual.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="login.php">Cerrar Sesión</a>
+            <a class="btn btn-success" href="login.php">Cerrar Sesión</a>
           </div>
         </div>
       </div>
