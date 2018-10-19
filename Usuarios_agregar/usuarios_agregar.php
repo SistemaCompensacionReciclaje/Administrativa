@@ -139,7 +139,7 @@
                 </div>
                 <div class="col-md-4">
                   <br>
-                <h5 align="center">Numero de cuenta:</h5>
+                <h5 align="center">Número de Cuenta:</h5>
                 <h5 align="right">0000000</h5>
                 </div>
               </div>
@@ -365,9 +365,10 @@
 
                           </fieldset>
                           </form>
-              <center><a  class="btn btn-success" href="usuarios.php">Agregar Nuevo 
+              <center><a  class="btn btn-success" href="usuarios.php">Agregar 
                 <span class="fas fa-fw fa-user-plus"></span>
               </a></center>  
+              <br>
             </div>
           </div>
 
@@ -406,7 +407,7 @@
           <div class="modal-body">Seleccione "Cerrar Sesión" debajo si desea finalizar la sesión actual.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="login.html">Cerrar Sesión</a>
+            <a class="btn btn-success" href="login.html">Cerrar Sesión</a>
           </div>
         </div>
       </div>
